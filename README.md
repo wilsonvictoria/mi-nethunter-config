@@ -64,10 +64,15 @@ Ya dentro de la consola de Kali (verás que es blanca/básica por ahora), ejecut
 ## 🤖 Uso Diario
 
 Una vez instalado todo:
+
 1.  Abre Termux -> Entrará solo a Kali.
 2.  Verás el logo del dragón y el estado del sistema.
-3.  Usa el comando `gemini "tu pregunta"` para hablar con la IA.
-4.  Usa `update` para actualizar el sistema con un alias rápido.
+3.  **Inteligencia Artificial (Gemini):**
+    *   Escribe `gemini` y pulsa Enter para abrir el **chat interactivo** (conversación fluida).
+    *   O escribe `gemini "tu pregunta"` para una respuesta rápida y directa.
+4.  **Actualización del Sistema:**
+    *   Escribe simplemente `update`.
+    *   *¿Qué hace esto?* Es un atajo creado por el script. Ejecuta automáticamente `apt update && apt upgrade -y` para mantener tu Kali actualizado sin escribir comandos largos.
 
 ---
 
