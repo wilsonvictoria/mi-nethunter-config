@@ -196,8 +196,17 @@ else
     echo -e "Saltando configuración de GitHub."
 fi
 
-# 6. Configurar Shell
-echo -e "${GREEN}[6/6] Finalizando...${NC}"
+# 6. MEDIA TOOLS (yt-dlp + spotdl)
+echo -e "${GREEN}[6/7] Instalando Suite Multimedia (Video & Música)...${NC}"
+echo -e "${BLUE}[+] Instalando dependencias (Python, FFmpeg)...${NC}"
+apt-get install -y python3 python3-pip ffmpeg atomicparsley build-essential > /dev/null 2>&1
+
+echo -e "${BLUE}[+] Instalando yt-dlp y spotdl (esto puede tardar)...${NC}"
+# Usamos --break-system-packages porque en NetHunter root es el comportamiento deseado
+pip install yt-dlp spotdl --break-system-packages > /dev/null 2>&1
+
+# 7. Configurar Shell
+echo -e "${GREEN}[7/7] Finalizando...${NC}"
 cat << 'ZSH_CFG' > ~/.zshrc
 export PNPM_HOME="/root/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH:/usr/sbin:/sbin:/usr/local/bin"
@@ -208,6 +217,10 @@ alias ll='ls -la --color=auto'
 alias c='clear'
 alias update='apt update && apt upgrade -y'
 alias ff='fastfetch'
+
+# Alias Multimedia
+alias video='yt-dlp'
+alias musica='spotdl'
 
 if [[ -o interactive ]]; then
     clear

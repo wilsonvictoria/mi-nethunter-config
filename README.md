@@ -1,61 +1,60 @@
-# 🐉 NetHunter Ultimate Installer v2.0 (GitHub Edition)
+# 🐉 NetHunter Ultimate Installer v2.0 (Media Edition)
 
-Este repositorio contiene una configuración automatizada para desplegar **Kali NetHunter Full** en Termux, optimizada con **Gemini CLI**, **Fastfetch (Modo Dragón)** y un **Asistente de GitHub**.
+Este repositorio contiene la versión definitiva de **Kali NetHunter** para Termux. Incluye Inteligencia Artificial, Conexión a GitHub y una **Suite Multimedia** completa.
 
 > **Autor:** @betovittoria  
-> **Rama:** feature/auto-github (Experimental)
+> **Rama:** feature/media-tools
 
 ---
 
 ## 🚀 Características Nuevas
 
-*   **🔐 Auto-Conexión GitHub:** El instalador te preguntará si quieres conectar tu cuenta. Si dices "Sí", instalará GitHub CLI (`gh`), iniciará sesión y configurará tus claves SSH y tu usuario de Git automáticamente.
-*   **Instalación Desatendida:** Prepara Termux, descarga y configura Kali sin intervención.
-*   **Fix Gemini AI:** Instala `pnpm` y `gemini-cli-core` con enlaces simbólicos para que funcione nativamente.
-*   **Estética Cyberpunk:** Incluye fuente *MesloLGS NF*, tema *Atomic* y el Dragón al inicio.
+*   **🎬 Descargador de Video (yt-dlp):** Descarga videos de YouTube, TikTok, Twitter, etc. en máxima calidad (4K/8K) con soporte automático para unir audio y video.
+*   **🎵 Descargador de Spotify (spotdl):** Descarga playlists, álbumes o canciones de Spotify con carátulas, letras y metadatos originales.
+*   **🔐 Auto-Conexión GitHub:** Asistente interactivo para conectar tu cuenta.
+*   **🧠 Gemini AI:** Inteligencia Artificial integrada en la terminal.
 
 ---
 
-## 🛠️ Instrucciones de Instalación
+## 🛠️ Instalación
 
-### 1. Clonar y Cambiar a la Rama Experimental
-Para usar esta versión con el asistente de GitHub, debes seleccionar la rama correcta:
+Para obtener esta versión con TODAS las herramientas:
 
 ```bash
 # Clona el repositorio
 git clone https://github.com/wilsonvictoria/mi-nethunter-config.git
 
-# Entra y cambia a la versión con GitHub
+# Cambia a la rama Multimedia
 cd mi-nethunter-config
-git checkout feature/auto-github
+git checkout feature/media-tools
 
 # Ejecuta el instalador
 bash installer.sh
 ```
 
-### 2. Durante la Instalación
-El script hará todo automático, pero casi al final verás esto:
-
-> **¿Quieres conectar tu cuenta de GitHub ahora? (s/n)**
-
-*   **Si dices SÍ:** Te pedirá autorizar en el navegador y luego tu Nombre/Email para dejar todo listo.
-*   **Si dices NO:** Saltará este paso y terminará la instalación normal.
-
-### 3. Configuración del Entorno
-Si no entraste automáticamente al terminar:
-
-```bash
-nh
-./activar.sh
-```
-
 ---
 
-## 🤖 Uso Diario
+## 🤖 Manual de Uso
 
-1.  **Inteligencia Artificial:** `gemini "pregunta"` o solo `gemini` para chat.
-2.  **Mantenimiento:** `update` para actualizar todo el sistema.
-3.  **Git:** ¡Ya puedes hacer `git push` sin contraseñas gracias a la configuración automática!
+### 🎬 Descargar Videos
+Usa el comando `video` (alias de yt-dlp).
+
+*   **Básico:** `video "URL_DEL_VIDEO"`
+*   **Solo Audio (MP3):** `video -x --audio-format mp3 "URL"`
+*   **Formato específico:** `video -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" "URL"` (Mejor calidad mp4)
+
+### 🎵 Descargar Música
+Usa el comando `musica` (alias de spotdl).
+
+*   **Canción:** `musica "https://open.spotify.com/track/..."`
+*   **Playlist completa:** `musica "https://open.spotify.com/playlist/..."`
+*   **Búsqueda:** `musica "Nombre Canción Artista"`
+
+### 🧠 Inteligencia Artificial
+*   `gemini "pregunta"`
+
+### ☁️ Actualizar Sistema
+*   `update`
 
 ---
-*Disfruta de tu entorno de pentesting conectado a la nube.*
+*Convierte tu Android en una navaja suiza digital.*
