@@ -163,8 +163,41 @@ chmod +x /usr/local/bin/oh-my-posh
 mkdir -p ~/.posh-themes
 curl -L -s https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/atomic.omp.json -o ~/.posh-themes/atomic.omp.json
 
-# 5. Configurar Shell
-echo -e "${GREEN}[5/5] Finalizando...${NC}"
+# 5. GITHUB CONNECT (Opción Nueva)
+echo -e "${GREEN}[5/6] Preparando GitHub...${NC}"
+# Instalar GH CLI manualmente (más seguro en ARM64)
+wget -q https://github.com/cli/cli/releases/download/v2.66.1/gh_2.66.1_linux_arm64.tar.gz -O gh.tar.gz
+tar -xf gh.tar.gz
+cp gh_*_linux_arm64/bin/gh /usr/local/bin/
+chmod +x /usr/local/bin/gh
+rm -rf gh.tar.gz gh_*_linux_arm64
+
+echo -e "${CYAN}------------------------------------------------${NC}"
+echo -e "${BOLD}¿Quieres conectar tu cuenta de GitHub ahora? (s/n)${NC}"
+echo -e "${CYAN}------------------------------------------------${NC}"
+read -r respuesta
+if [[ "$respuesta" =~ ^[Ss]$ ]]; then
+    echo -e "${BLUE}[*] Iniciando asistente de conexión...${NC}"
+    echo -e "A continuación, selecciona: ${BOLD}GitHub.com -> SSH -> Yes${NC}"
+    gh auth login
+    
+    echo -e "${BLUE}[*] Configurando tu firma de Git...${NC}"
+    echo -n "Tu Nombre de Usuario (ej: Wilson): "
+    read git_user
+    echo -n "Tu Email de GitHub: "
+    read git_email
+    
+    if [ ! -z "$git_user" ] && [ ! -z "$git_email" ]; then
+        git config --global user.name "$git_user"
+        git config --global user.email "$git_email"
+        echo -e "${GREEN}[OK] Git configurado correctamente.${NC}"
+    fi
+else
+    echo -e "Saltando configuración de GitHub."
+fi
+
+# 6. Configurar Shell
+echo -e "${GREEN}[6/6] Finalizando...${NC}"
 cat << 'ZSH_CFG' > ~/.zshrc
 export PNPM_HOME="/root/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH:/usr/sbin:/sbin:/usr/local/bin"
